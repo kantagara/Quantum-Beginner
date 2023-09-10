@@ -26,7 +26,7 @@ public unsafe class CharacterMovementSystem : SystemMainThreadFilter<CharacterMo
         FPVector3 targetDirection = FPQuaternion.Euler(FP._0, input->Look, FP._0) * (input->Move == FPVector2.Zero ? FPVector3.Zero : FPVector3.Forward);
         
         
-        characterController->Move(f, filter.Entity, FPVector3.Zero);
+        characterController->Move(f, filter.Entity, targetDirection);
     }
 
     public void OnPlayerConnected(Frame f, PlayerRef player)

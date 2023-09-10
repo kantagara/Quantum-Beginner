@@ -14,10 +14,6 @@ public unsafe class CharacterSpawnSystem : SystemSignalsOnly, ISignalOnPlayerDat
         f.Unsafe.GetPointer<Transform3D>(player)->Position = f.Get<Transform3D>(spawnPoints[number]).Position;
     }
 
-    public void OnPlayerConnected(Frame f, PlayerRef playerRef)
-    {
-       
-    }
     
     private void CreateSpawnPointList(Frame f){
         
@@ -28,10 +24,8 @@ public unsafe class CharacterSpawnSystem : SystemSignalsOnly, ISignalOnPlayerDat
         QList<EntityRef> spawnPoints = f.ResolveList(f.Global->AvailableSpawnPoints);
         foreach (var (entity, _) in f.Unsafe.GetComponentBlockIterator<SpawnPoint>())
         {
-            Log.Error("HEREEE");
             spawnPoints.Add(entity);
         }
-        Log.Error(spawnPoints.Count);
     }
 
 
@@ -42,9 +36,8 @@ public unsafe class CharacterSpawnSystem : SystemSignalsOnly, ISignalOnPlayerDat
         Player* playerID = f.Unsafe.GetPointer<Player>(player);
         playerID->player = playerRef;
         
-        Log.Error("PLAYER CONNECTED");
         CreateSpawnPointList(f);
-        //SetPlayerPosition(f, player);
+        SetPlayerPosition(f, player);
         f.Events.OnPlayerSpawned(player, playerRef);
     }
 }
