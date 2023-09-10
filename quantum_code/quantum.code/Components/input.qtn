@@ -1,0 +1,7 @@
+input
+{
+    button Jump;
+    button Sprint;
+    FPVector2 Move;
+    FP Look;
+}

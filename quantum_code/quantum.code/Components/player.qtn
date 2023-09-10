@@ -1,0 +1,16 @@
+component Player{
+    player_ref player;
+}
+
+event OnPlayerSpawned{
+    entity_ref entity;
+    player_ref player;
+}
+
+component SpawnPoint{
+
+}
+
+global{
+    list<entity_ref> AvailableSpawnPoints;
+}
